@@ -1,0 +1,32 @@
+i   Do case-insensitive pattern matching.
+
+    If locale matching rules are in effect, the case map is taken
+    from the current locale for code points less than 255, and
+    from Unicode rules for larger code points. However, matches
+    that would cross the Unicode rules/non-Unicode rules boundary
+    (ords 255/256) will not succeed.
+
+m   Treat string as multiple lines.  That is, change "^" and "$"
+    from matching the start or end of the string to matching the
+    start or end of any line anywhere within the string.
+
+s   Treat string as single line.  That is, change "." to match any
+    character whatsoever, even a newline, which normally it would
+    not match.
+
+    Used together, as r""ms, they let the "." match any character
+    whatsoever, while still allowing "^" and "$" to match,
+    respectively, just after and just before newlines within the
+    string.
+
+x   Tells the regular expression parser to ignore most whitespace
+    that is neither backslashed nor within a character class. You
+    can use this to break up your regular expression into
+    (slightly) more readable parts. The '#' character is also
+    treated as a metacharacter introducing a comment, just as in
+    ordinary code.
+
+
+    
+match(r"\w+","example").match  (沒有捕獲組)
+match(r"(\w+)","example").captures[1] (有捕獲組)
