@@ -37,3 +37,8 @@ match_word=map(x->x.match,match_word_regex)  (catch the text match regex)
 filter(m -> occursin(r"[-、A-Za-z]", m), matches)
 subset(salaries(),:names => ByRow(m -> occursin(r".*john.*"i, m)))
 
+#raplace nothing to missing
+transform(df,:A=> ByRow(x->isnothing(x) ? missing : x) ; renamecols=false)
+
+replace!(df.A,nothing=>missing)
+
