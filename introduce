@@ -30,3 +30,10 @@ x   Tells the regular expression parser to ignore most whitespace
     
 match(r"\w+","example").match  (沒有捕獲組)
 match(r"(\w+)","example").captures[1] (有捕獲組)
+
+match_word_regex=collect(eachmatch(r"\w+.*\w"m,text))
+match_word=map(x->x.match,match_word_regex)  (catch the text match regex)
+*Check Regex mach regex or not
+filter(m -> occursin(r"[-、A-Za-z]", m), matches)
+subset(salaries(),:names => ByRow(m -> occursin(r".*john.*"i, m)))
+
